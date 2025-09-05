@@ -66,6 +66,11 @@ generate_line_chart_function = FunctionSchema(
             "minItems": 1,
             "description": "Data series for trend lines - multiple series allowed for comparison"
         },
+        "data_type": {
+            "type": "string",
+            "enum": ["currency", "numericalValue", "percentage", "unknown"],
+            "description": "Type of data values - currency (format with ₹), numericalValue (format with K/L/Cr), percentage (show % and use last value in legend), unknown (no special formatting)"
+        },
         "voice_description": {
             "type": "string",
             "description": "Natural language description for voice narration"
@@ -75,7 +80,7 @@ generate_line_chart_function = FunctionSchema(
             "description": "Optional chart subtitle"
         }
     },
-    required=["title", "categories", "series_data", "voice_description"]
+    required=["title", "categories", "series_data", "data_type", "voice_description"]
 )
 
 generate_donut_chart_function = FunctionSchema(
